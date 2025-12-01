@@ -1,1 +1,61 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@font-face {
+  font-family: 'UncutSans';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src:
+    local('UncutSans'),
+    url('/fonts/UncutSans-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'UncutSans';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src:
+    local('UncutSans'),
+    url('/fonts/UncutSans-Semibold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'UncutSans';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src:
+    local('UncutSans'),
+    url('/fonts/UncutSans-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'UncutSans';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src:
+    local('UncutSans'),
+    url('/fonts/UncutSans-Regular.woff2') format('woff2');
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    font-family: 'UncutSans', sans-serif;
+    @apply bg-white text-black dark:bg-black dark:text-white;
+  }
+
+  main {
+    @apply flex-1 py-24 pt-32;
+  }
+
+  header {
+    @apply fixed top-4 right-0 left-0 z-50 py-5;
+  }
+}

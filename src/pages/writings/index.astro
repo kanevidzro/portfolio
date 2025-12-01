@@ -1,0 +1,31 @@
+---
+import WritingItem from '../../components/WritingItem.astro'
+import { getCollection } from 'astro:content'
+import PageLayout from '../../layouts/Layout.astro'
+import { WRITINGS } from '../../consts.ts'
+import Container from '../../components/Container.astro'
+
+const writings = (await getCollection('writing')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+)
+---
+
+<PageLayout title={WRITINGS.TITLE} description={WRITINGS.DESCRIPTION}>
+  <Container>
+    <h1 class="w-full pb-8 text-7xl font-medium tracking-tight">
+      {WRITINGS.TITLE.toLowerCase()}
+    </h1>
+
+    <div class="flex w-full max-w-xl flex-col gap-6">
+      {
+        writings.map((writing) => (
+          <WritingItem
+            title={writing.data.title}
+            date={writing.data.pubDate}
+            slug={writing.slug}
+          />
+        ))
+      }
+    </div>
+  </Container>
+</PageLayout>

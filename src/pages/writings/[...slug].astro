@@ -1,0 +1,63 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content'
+import Layout from '../../layouts/Layout.astro'
+import Container from '../../components/Container.astro'
+import FormattedDate from '../../components/FormattedDate.astro'
+import { readingTime } from '../../lib/utils'
+import clsx from 'clsx'
+
+export async function getStaticPaths() {
+  const writings = (await getCollection('writing'))
+    .filter((post) => !post.data.draft)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  return writings.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }))
+}
+type Props = CollectionEntry<'writing'>
+
+const post = Astro.props
+const { Content } = await post.render()
+
+const { title, description, pubDate } = post.data
+---
+
+<Layout title={title} description={description}>
+  <Container>
+    <article
+      id="blog-content"
+      class="flex w-full flex-col items-center justify-center gap-6">
+      <h1
+        class="w-full text-4xl font-medium tracking-tight md:text-5xl lg:text-7xl">
+        {title}
+      </h1>
+      <div class="flex w-full flex-row gap-2">
+        <p class="text-start font-medium text-gray-500">
+          <FormattedDate date={pubDate} />
+        </p>
+        <span class="font-medium text-gray-500">·</span>
+        <p class="text-start font-medium text-gray-500">
+          {readingTime(post.body)}
+        </p>
+      </div>
+      <p
+        class="w-full text-start text-lg font-medium text-gray-700 dark:text-gray-300">
+        <span class="font-semibold text-gray-900 dark:text-white">tl;dr:</span>
+        {description}
+      </p>
+
+      <div
+        class={clsx(
+          'w-full prose prose-lg my-3 prose-p:font-medium dark:prose-invert prose-a:underline prose-a:bg-orange-50 prose-a:decoration-orange-500 items-center justify-center',
+          'dark:prose-a:bg-orange-950 dark:prose-a:decoration-orange-400 dark:prose-a:underline',
+          'prose-h1:font-medium prose-h2:font-medium prose-h3:font-medium prose-h4:font-medium prose-h5:font-medium prose-h6:font-medium',
+          'prose-h1:tracking-tight prose-h2:tracking-tight prose-h3:tracking-tight prose-h4:tracking-tight prose-h5:tracking-tight prose-h6:tracking-tight',
+          'prose-ul:font-medium prose-ol:font-medium prose-li:font-medium',
+          'prose-ul:space-y-3 prose-ol:space-y-3 prose-li:space-y-3',
+        )}>
+        <Content />
+      </div>
+    </article>
+  </Container>
+</Layout>

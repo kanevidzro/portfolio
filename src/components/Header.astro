@@ -1,0 +1,17 @@
+---
+import Link from './Link.astro'
+import Container from './Container.astro'
+import ThemeSwitcher from './Switcher.astro'
+import { menuItems } from '../consts'
+---
+
+<header>
+  <Container>
+    <div class="flex w-full flex-row items-center justify-between">
+      <div class="flex flex-row items-start gap-3 font-medium text-black">
+        {menuItems.map((item) => <Link href={item.url}>{item.label}</Link>)}
+      </div>
+      <ThemeSwitcher />
+    </div>
+  </Container>
+</header>

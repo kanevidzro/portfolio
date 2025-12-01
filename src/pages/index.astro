@@ -1,8 +1,38 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import { HOME, SOCIALS } from '../consts'
+import Container from '../components/Container.astro'
 ---
 
-<Layout>
-  <h1>Welcome to my portfolio!</h1>
-  <p>This is the homepage of Kane Vidzro.</p>
+<Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+  <Container>
+    <h1
+      class="w-full pb-6 text-start text-[min(12vw,72px)] leading-[0.9] font-medium tracking-[-2px] sm:tracking-[-4px]">
+      Kane Vidzro,<br />
+      <span class="text-gray-500 dark:text-gray-400">CEO of Xtottel</span>
+    </h1>
+    <div id="about" class="flex flex-col gap-4">
+      <div class="text-lg font-medium text-gray-700 dark:text-gray-400">
+        I run <a
+          href="https://xtottel.com"
+          target="_blank"
+          class="underline underline-offset-2">
+          Xtottel
+        </a>, a software development company specializing in communication APIs,
+        payment solutions, and custom enterprise software.
+      </div>
+
+      <div id="social-links" class="flex flex-row gap-4">
+        {
+          SOCIALS.map((SOCIAL) => (
+            <a
+              href={SOCIAL.URL}
+              class="text-lg font-medium text-gray-700 underline-offset-2 hover:text-gray-900 hover:underline dark:text-gray-400 dark:hover:text-gray-100">
+              {SOCIAL.NAME}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </Container>
 </Layout>
