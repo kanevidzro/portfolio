@@ -80,3 +80,24 @@ const { title, description, image = '/nano.png' } = Astro.props
   title="Kane Vidzro's RSS Feed"
   href={new URL('rss.xml', Astro.site)}
 />
+
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Kane Vidzro",
+  "jobTitle": "Software Developer",
+  "description": "Kane Vidzro is a software developer who founded Xtottel and co-founded Sendexa, focusing on building scalable SaaS solutions for African businesses.",
+  "url": "https://kanevidzro.com",
+  "birthDate": "2008-02-15",
+  "image": "https://kanevidzro.com/assets/kv2zax.png",
+  "sameAs": [
+    "https://twitter.com/kanevidzro",
+    "https://linkedin.com/in/kanevidzro",
+    "https://instagram.com/kanevidzro",
+    "https://github.com/kanevidzro"
+  ]
+}
+</script>
