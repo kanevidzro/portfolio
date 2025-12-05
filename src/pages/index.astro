@@ -1,11 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import { HOME, SOCIALS } from '../consts'
-import Container from '../components/Container.astro'
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
-  <Container>
+  <section>
     <h1
       class="w-full pb-6 text-start text-[min(12vw,72px)] leading-[0.9] font-medium tracking-[-2px] sm:tracking-[-4px]">
       Kane Vidzro,<br />
@@ -34,5 +33,5 @@ import Container from '../components/Container.astro'
         }
       </div>
     </div>
-  </Container>
+  </section>
 </Layout>

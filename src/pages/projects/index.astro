@@ -1,15 +1,12 @@
 ---
 import PageLayout from '../../layouts/Layout.astro'
 import { PROJECTS } from '../../consts.ts'
-import Container from '../../components/Container.astro'
 ---
 
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
-  <Container>
+  <section>
     <h1 class="w-full pb-8 text-7xl font-medium tracking-tight">
       {PROJECTS.TITLE.toLowerCase()}
     </h1>
-
-    
-  </Container>
+  </section>
 </PageLayout>

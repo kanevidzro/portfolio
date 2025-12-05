@@ -62,14 +62,15 @@ const { title, description, image = '/nano.png' } = Astro.props
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={new URL(image, Astro.site)} />
+<meta property="og:site_name" content="Kane Vidzro" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:image" content={new URL(image, Astro.site)} />
 
 <ClientRouter />
 
@@ -77,27 +78,52 @@ const { title, description, image = '/nano.png' } = Astro.props
 <link
   rel="alternate"
   type="application/rss+xml"
-  title="Kane Vidzro's RSS Feed"
+  title="Kane's RSS Feed"
   href={new URL('rss.xml', Astro.site)}
 />
 
-
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Kane Vidzro",
-  "jobTitle": "Chief Executive Officer (CEO)",
-  "description": "CEO and founder of Xtottel, a technology company providing communication APIs and e-commerce infrastructure to power Africa's next economic surge through technology.",
-  "url": "https://kanevidzro.com",
-  "birthDate": "2008-02-15",
-  "image": "https://kanevidzro.com/assets/82zax.jpg",
-  "sameAs": [
-    "https://twitter.com/kanevidzro",
-    "https://linkedin.com/in/kanevidzro",
-    "https://instagram.com/kanevidzro",
-    "https://github.com/kanevidzro"
-  ]
-}
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://kanevidzro.com/#person",
+        "name": "Kane Vidzro",
+        "jobTitle": "Software Developer & Architect",
+        "description": "Software Developer and Architect building high-reliability CPaaS and e-commerce systems at Xtottel to support Africa’s digital future.",
+        "url": "https://kanevidzro.com",
+        "birthDate": "2008-02-15",
+        "image": "https://kanevidzro.com/assets/82zax.jpg",
+        "worksFor": {
+          "@id": "https://xtottel.com/#organization"
+        },
+        "sameAs": [
+          "https://twitter.com/kanevidzro",
+          "https://linkedin.com/in/kanevidzro",
+          "https://instagram.com/kanevidzro",
+          "https://github.com/kanevidzro"
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://xtottel.com/#organization",
+        "name": "Xtottel Technologies Limited",
+        "alternateName": "Xtottel",
+        "url": "https://xtottel.com",
+        "logo": "https://xtottel.com/assets/logo.png",
+        "founder": {
+          "@id": "https://kanevidzro.com/#person"
+        },
+        "sameAs": [
+          "https://linkedin.com/company/xtottel",
+          "https://github.com/xtottel",
+          "https://twitter.com/xtottel",
+          "https://facebook.com/xtottel",
+          "https://instagram.com/xtottel"
+        ]
+      }
+    ]
+  }
 </script>

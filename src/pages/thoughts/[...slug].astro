@@ -1,7 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content'
 import Layout from '../../layouts/Layout.astro'
-import Container from '../../components/Container.astro'
 import FormattedDate from '../../components/FormattedDate.astro'
 import { readingTime } from '../../lib/utils'
 import clsx from 'clsx'
@@ -21,10 +20,38 @@ const post = Astro.props
 const { Content } = await post.render()
 
 const { title, description, pubDate } = post.data
+
+const ogImageUrl = new URL(`/og/${post.slug}.png`, Astro.site).toString()
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
-  <Container>
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  image={ogImageUrl}>
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: title,
+      description: description,
+      image: ogImageUrl,
+      url: new URL(Astro.url.pathname, Astro.site).toString(),
+      datePublished: pubDate,
+      dateModified: pubDate,
+      author: {
+        '@type': 'Person',
+        name: 'Kane Vidzro',
+        url: 'https://kanevidzro.com',
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': new URL(Astro.url.pathname, Astro.site).toString(),
+      },
+    })}
+  />
+  <section>
     <article
       id="blog-content"
       class="flex w-full flex-col items-center justify-center gap-6">
@@ -62,5 +89,5 @@ const { title, description, pubDate } = post.data
         <Content />
       </div>
     </article>
-  </Container>
+  </section>
 </Layout>

@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.12",
+    "@astrojs/netlify": "^6.6.3",
     "@astrojs/react": "^4.4.2",
     "@astrojs/rss": "^4.0.14",
     "@astrojs/sitemap": "^3.6.0",
+    "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/vite": "^4.1.17",
     "astro": "^5.16.4",
     "clsx": "^2.1.1",
@@ -21,6 +23,7 @@
     "react-dom": "^19.2.1",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
+    "satori": "^0.18.3",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {

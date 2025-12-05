@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const title = '404 Not Found'
+const description = 'The page you are looking for does not exist.'
+---
+
+<Layout title={title} description={description}>
+  <section>
+    <h1 class="w-full pb-8 text-7xl font-medium tracking-tight">404</h1>
+    <p class="mt-4 text-lg">
+      Oops! Page not found. <a href="/" class="text-orange-500 underline">
+        Go Home
+      </a>
+    </p>
+  </section>
+</Layout>

@@ -1,9 +1,4 @@
-import type { Site, Metadata, Socials, MenuItem } from './types'
-
-export const SITE: Site = {
-  TITLE: 'My Personal Website',
-  NAME: 'Kane Vidzro',
-}
+import type { Metadata, Socials, MenuItem } from './types'
 
 export const WRITINGS: Metadata = {
   TITLE: 'Writings',

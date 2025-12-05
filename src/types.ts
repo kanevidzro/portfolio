@@ -1,8 +1,3 @@
-export type Site = {
-  TITLE: string
-  NAME: string
-}
-
 export type Metadata = {
   TITLE: string
   DESCRIPTION: string

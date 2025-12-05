@@ -8,13 +8,17 @@ import react from '@astrojs/react'
 import rehypeKatext from 'rehype-katex'
 import remarkMath from 'remark-math'
 
+import netlify from '@astrojs/netlify'
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://kanevidzro.com',
   integrations: [sitemap(), mdx(), react()],
+
   vite: {
     plugins: [tailwindcss()],
   },
+
   markdown: {
     shikiConfig: {
       themes: {
@@ -25,4 +29,6 @@ export default defineConfig({
     remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeKatext],
   },
+
+  adapter: netlify(),
 })

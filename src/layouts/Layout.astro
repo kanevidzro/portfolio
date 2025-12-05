@@ -1,8 +1,7 @@
 ---
 import Head from '../components/Head.astro'
-import { SITE } from '../consts'
 import Header from '../components/Header.astro'
-// import Footer from "../components/Footer.astro";
+import Container from './Container.astro'
 
 type Props = {
   title: string
@@ -17,16 +16,19 @@ const { title, description, image } = Astro.props
 <html lang="en">
   <head>
     <Head
-      title={`${title} | ${SITE.NAME}`}
+      title={`${title} | Kane Vidzro`}
       description={description}
       image={image}
     />
   </head>
-  <body>
-    <Header />
-    <main>
-      <slot />
-    </main>
-    <!-- <Footer /> -->
-  </body>
+  <Container>
+    <body>
+      <div id="navbar+title" class="flex w-full max-w-xl flex-col gap-6">
+        <Header />
+        <main>
+          <slot />
+        </main>
+      </div>
+    </body>
+  </Container>
 </html>

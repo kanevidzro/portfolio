@@ -1,7 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content'
 import Layout from '../../layouts/Layout.astro'
-import Container from '../../components/Container.astro'
 import FormattedDate from '../../components/FormattedDate.astro'
 import { readingTime } from '../../lib/utils'
 import clsx from 'clsx'
@@ -20,11 +19,37 @@ type Props = CollectionEntry<'writing'>
 const post = Astro.props
 const { Content } = await post.render()
 
-const { title, description, pubDate } = post.data
+const { title, description, pubDate, heroImage } = post.data
+
+const ogImageUrl = new URL(`/og/${post.slug}.png`, Astro.site).toString()
 ---
 
-<Layout title={title} description={description}>
-  <Container>
+<Layout title={title} description={description} image={ogImageUrl}>
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: title,
+      description: description,
+      image: ogImageUrl,
+      url: new URL(Astro.url.pathname, Astro.site).toString(),
+      datePublished: pubDate,
+      dateModified: pubDate,
+      author: {
+        '@type': 'Person',
+        name: 'Kane Vidzro',
+        url: 'https://kanevidzro.com',
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': new URL(Astro.url.pathname, Astro.site).toString(),
+      },
+    })}
+  />
+
+  <section>
     <article
       id="blog-content"
       class="flex w-full flex-col items-center justify-center gap-6">
@@ -47,6 +72,12 @@ const { title, description, pubDate } = post.data
         {description}
       </p>
 
+      {
+        heroImage && (
+          <img src={heroImage} alt={title} class="w-full rounded-lg" />
+        )
+      }
+
       <div
         class={clsx(
           'w-full prose prose-lg my-3 prose-p:font-medium dark:prose-invert prose-a:underline prose-a:bg-orange-50 prose-a:decoration-orange-500 items-center justify-center',
@@ -59,5 +90,5 @@ const { title, description, pubDate } = post.data
         <Content />
       </div>
     </article>
-  </Container>
+  </section>
 </Layout>
