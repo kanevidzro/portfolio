@@ -7,14 +7,13 @@ export const WRITINGS: Metadata = {
 
 export const PROJECTS: Metadata = {
   TITLE: 'Projects',
-  DESCRIPTION:
-    'A collection of my projects, with links to repositories and demos.',
+  DESCRIPTION: 'Showcasing my projects, with demos and code repositories.',
 }
 
 export const HOME: Metadata = {
   TITLE: 'Home',
   DESCRIPTION:
-    'Welcome to my personal website where I share my writings and projects.',
+    'Kane Vidzro’s personal site: writings, projects, and tech insights.',
 }
 
 export const THOUGHTS: Metadata = {

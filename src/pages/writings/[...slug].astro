@@ -20,11 +20,9 @@ const post = Astro.props
 const { Content } = await post.render()
 
 const { title, description, pubDate, heroImage } = post.data
-
-const ogImageUrl = new URL(`/og/${post.slug}.png`, Astro.site).toString()
 ---
 
-<Layout title={title} description={description} image={ogImageUrl}>
+<Layout title={title} description={description}>
   <script
     is:inline
     type="application/ld+json"
@@ -33,7 +31,6 @@ const ogImageUrl = new URL(`/og/${post.slug}.png`, Astro.site).toString()
       '@type': 'BlogPosting',
       headline: title,
       description: description,
-      image: ogImageUrl,
       url: new URL(Astro.url.pathname, Astro.site).toString(),
       datePublished: pubDate,
       dateModified: pubDate,

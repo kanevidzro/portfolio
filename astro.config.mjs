@@ -7,12 +7,18 @@ import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import rehypeKatext from 'rehype-katex'
 import remarkMath from 'remark-math'
-
-import netlify from '@astrojs/netlify'
+import vercel from '@astrojs/vercel'
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://kanevidzro.com',
+
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
+
   integrations: [sitemap(), mdx(), react()],
 
   vite: {
@@ -29,6 +35,4 @@ export default defineConfig({
     remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeKatext],
   },
-
-  adapter: netlify(),
 })

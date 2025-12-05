@@ -40,7 +40,6 @@ export async function GET(context: Context) {
         `/${item.collection}/${item.slug}/`,
         context.site,
       ).toString(),
-      image: new URL(`/og/${item.slug}.png`, context.site).toString(),
     })),
   })
 }
