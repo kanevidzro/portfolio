@@ -11,14 +11,24 @@ import { HOME, SOCIALS } from '../consts'
       <span class="text-gray-500 dark:text-gray-400">CEO of Xtottel</span>
     </h1>
     <div id="about" class="flex flex-col gap-4">
-      <div class="text-lg font-medium text-gray-700 dark:text-gray-400">
-        I run <a
-          href="https://xtottel.com"
-          target="_blank"
-          class="underline underline-offset-2">
-          Xtottel
-        </a>, a software development company specializing in communication APIs,
-        payment solutions, and custom enterprise software.
+      <div
+        class="flex flex-col gap-6 text-lg font-medium text-gray-700 dark:text-gray-400">
+        <p>
+          I am a 17-year-old Software Developer and entrepreneur. As the
+          hands-on CEO of
+          <a
+            href="https://xtottel.com"
+            target="_blank"
+            class="underline underline-offset-2 hover:text-gray-900 dark:hover:text-gray-100">
+            Xtottel
+          </a>, I lead the mission to pioneer <b>Scalable SaaS in Africa</b>.
+        </p>
+
+        <p>
+          My work is rooted in architecting and building high-performance
+          <b>communication APIs and payment solutions</b>, leveraging a modern
+          stack built for reliability and speed in the African market.
+        </p>
       </div>
 
       <div id="social-links" class="flex flex-row gap-4">
@@ -26,6 +36,7 @@ import { HOME, SOCIALS } from '../consts'
           SOCIALS.map((SOCIAL) => (
             <a
               href={SOCIAL.URL}
+              target="_blank"
               class="text-lg font-medium text-gray-700 underline-offset-2 hover:text-gray-900 hover:underline dark:text-gray-400 dark:hover:text-gray-100">
               {SOCIAL.NAME}
             </a>
