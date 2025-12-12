@@ -6,24 +6,34 @@ import { clsx } from 'clsx'
 const { category, content, pubDate, index, slug } = Astro.props
 ---
 
-<a href={`/thoughts/${slug}`}>
+<a href={`/thoughts/${slug}`} class="block">
   <article
     id={category}
     class={clsx(
-      'flex flex-col w-full items-center justify-between gap-3 p-6 relative transition-all duration-75 ease-in-out',
-      getCategoryColor(category), // set the background color based on category
-      index % 2 === 0 ? 'rotate-1 hover:rotate-0' : '-rotate-1 hover:rotate-0', // rotate the card
+      'flex w-full flex-col gap-4 p-6 rounded-xl relative transition-all duration-100 ease-in-out cursor-pointer',
+      getCategoryColor(category),
+      index % 2 === 0 ? 'rotate-1 hover:rotate-0' : '-rotate-1 hover:rotate-0',
+      'hover:shadow-lg',
     )}>
-    <span class="absolute top-3 right-3 text-5xl text-gray-700">"</span>
-    <h5 class="text-md w-full font-medium text-gray-900 dark:text-gray-900">
-      Kane V. on
-      <span class="underline decoration-wavy">{category}</span>
+    <!-- Decorative Quote -->
+    <span class="absolute top-3 right-4 text-4xl text-gray-600 opacity-50">
+      "
+    </span>
+
+    <!-- Category -->
+    <h5 class="text-md font-medium text-gray-800 dark:text-gray-800">
+      Kane V. on <span class="underline decoration-wavy">{category}</span>
     </h5>
+
+    <!-- Main Thought -->
     <h1
-      class="w-full indent-9 font-medium text-black sm:text-xl md:text-2xl dark:text-black">
+      class="w-full indent-8 text-lg leading-snug font-medium text-gray-900 sm:text-xl md:text-2xl dark:text-gray-900">
       {content}
     </h1>
-    <p class="w-full text-end text-sm font-medium text-black">
+
+    <!-- Date -->
+    <p
+      class="w-full text-end text-sm font-medium text-gray-800 dark:text-gray-800">
       <FormattedDate date={pubDate} />
     </p>
   </article>

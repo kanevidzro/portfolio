@@ -9,20 +9,22 @@ export async function getStaticPaths() {
   const thoughts = (await getCollection('thought'))
     .filter((post) => !post.data.draft)
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+
   return thoughts.map((post) => ({
     params: { slug: post.slug },
     props: post,
   }))
 }
+
 type Props = CollectionEntry<'thought'>
 
 const post = Astro.props
 const { Content } = await post.render()
-
 const { title, description, pubDate } = post.data
 ---
 
 <Layout title={title} description={description}>
+  <!-- SEO -->
   <script
     is:inline
     type="application/ld+json"
@@ -30,7 +32,7 @@ const { title, description, pubDate } = post.data
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
       headline: title,
-      description: description,
+      description,
       url: new URL(Astro.url.pathname, Astro.site).toString(),
       datePublished: pubDate,
       dateModified: pubDate,
@@ -45,40 +47,34 @@ const { title, description, pubDate } = post.data
       },
     })}
   />
+
   <section>
-    <article
-      id="blog-content"
-      class="flex w-full flex-col items-center justify-center gap-6">
-      <h1
-        class="w-full text-4xl font-medium tracking-tight md:text-5xl lg:text-7xl">
+    <article class="flex flex-col gap-6">
+      <!-- Title -->
+      <h1 class="text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl">
         {title}
       </h1>
-      <div class="flex w-full flex-row gap-2">
-        <p class="text-start font-medium text-gray-500">
-          <FormattedDate date={pubDate} />
-        </p>
-        <span class="font-medium text-gray-500">·</span>
-        <p class="text-start font-medium text-gray-500">
-          {readingTime(post.body)}
-        </p>
+
+      <!-- Meta -->
+      <div class="flex gap-2 text-[15px] font-medium text-gray-500">
+        <FormattedDate date={pubDate} />
+        <span>·</span>
+        <span>{readingTime(post.body)}</span>
       </div>
 
-      {
-        (
-          <p class="w-full text-start text-lg leading-relaxed font-medium text-gray-700 dark:text-gray-300">
-            <span class="font-semibold">tl;dr: </span>
-            {description}
-          </p>
-        )
-      }
+      <!-- TLDR -->
+      <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+        <span class="font-semibold text-gray-900 dark:text-white">tl;dr:</span>
+        {description}
+      </p>
+
+      <!-- Body -->
       <div
         class={clsx(
-          'w-full prose prose-lg my-3 prose-p:font-medium dark:prose-invert prose-a:underline  items-center justify-center',
-          'dark:prose-a:bg-red-950 dark:prose-a:decoration-red-400 dark:prose-a:underline prose-a:bg-red-50 prose-a:decoration-red-500',
-          'prose-h1:font-medium prose-h2:font-medium prose-h3:font-medium prose-h4:font-medium prose-h5:font-medium prose-h6:font-medium',
-          'prose-h1:tracking-tight prose-h2:tracking-tight prose-h3:tracking-tight prose-h4:tracking-tight prose-h5:tracking-tight prose-h6:tracking-tight',
-          'prose-ul:font-medium prose-ol:font-medium prose-li:font-medium',
-          'prose-ul:space-y-3 prose-ol:space-y-3 prose-li:space-y-3',
+          'prose prose-lg dark:prose-invert my-3 w-full',
+          'prose-p:font-medium prose-li:font-medium prose-ul:space-y-3 prose-ol:space-y-3',
+          'prose-a:underline prose-a:bg-red-50 prose-a:decoration-red-500',
+          'dark:prose-a:bg-red-950 dark:prose-a:decoration-red-400',
         )}>
         <Content />
       </div>

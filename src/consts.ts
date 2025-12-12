@@ -72,7 +72,7 @@ export const projects = [
   {
     name: 'HogMog',
     url: 'https://hogmog.vercel.app',
-    image: '/tools/bun.svg',
+    image: '/skills/bun.svg',
   },
 ]
 
