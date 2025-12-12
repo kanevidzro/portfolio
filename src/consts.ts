@@ -87,7 +87,7 @@ export const education = [
   },
   {
     school: {
-      name: 'Agorve South R.C. Basic school',
+      name: 'Agorve South R.C. Basic School',
       image: '/assets/waec.png',
     },
     course: 'BECE - Compulsory Education',
