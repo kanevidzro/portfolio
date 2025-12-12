@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import { HOME, SOCIALS } from '../consts'
+import { HOME, SOCIALS, products } from '../consts'
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
@@ -23,6 +23,23 @@ import { HOME, SOCIALS } from '../consts'
             Xtottel
           </a>, I lead the mission to pioneer <b>Scalable SaaS in Africa</b>.
         </p>
+
+        <div class="text-lg font-medium text-gray-700 dark:text-gray-300">
+          I work on ideas like
+          <div class="mt-5 flex flex-wrap gap-2">
+            {
+              products.map((product) => (
+                <a
+                  href={product.url}
+                  target="_blank"
+                  class="flex flex-wrap items-center justify-center gap-2 rounded-full bg-gray-100 p-2 transition-all duration-300 hover:scale-105 hover:rotate-1 hover:bg-gray-200 dark:bg-[#1F1F1F] dark:hover:bg-[#2F2F2F]">
+                  <img src={product.image} alt={product.name} class="size-9" />
+                  <span class="mr-2">{product.name}</span>
+                </a>
+              ))
+            }
+          </div>
+        </div>
 
         <p>
           My work is rooted in architecting and building high-performance

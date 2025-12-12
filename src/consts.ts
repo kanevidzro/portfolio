@@ -57,3 +57,21 @@ export const menuItems: MenuItem = [
     url: '/projects',
   },
 ]
+
+export const products = [
+  {
+    name: 'Xtottel',
+    url: 'https://www.xtottel.com',
+    image: '/projects/xtottel.png',
+  },
+  {
+    name: 'Sendexa',
+    url: 'https://www.sendexa.co',
+    image: '/projects/sendexa.png',
+  },
+  {
+    name: 'HogMog',
+    url: 'https://hogmog.vercel.app',
+    image: '/tools/bun.svg',
+  },
+]
