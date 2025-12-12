@@ -6,20 +6,28 @@ type Props = HTMLAttributes<'a'>
 
 const { href, class: className, ...props } = Astro.props
 
+// Get current path
 const { pathname } = Astro.url
-const subpath = pathname.match(/[^\/]+/g)
-const isActive = href === pathname || href === `/${subpath?.[0]}`
----
 
+// First segment: "/writings/abc" → "writings"
+const firstSegment = pathname.split('/')[1]
+
+// Active if exact match OR if it's the first segment
+const isActive =
+  href === pathname ||
+  href === `/${firstSegment}`
+---
 <a
   href={href}
   class={clsx(
-    'hover:text-black dark:hover:text-white',
-    'hover:font-medium hover:cursor-pointer transition-all duration-100 ease-in-out',
+    'transition-all duration-100 ease-in-out hover:cursor-pointer',
+    // Active styles
     isActive
       ? 'text-black dark:text-white font-medium'
-      : 'text-gray-400 dark:text-gray-500 font-medium',
+      : 'text-gray-400 dark:text-gray-500 font-medium hover:text-black dark:hover:text-white',
+    className,
   )}
-  {...props}>
+  {...props}
+>
   <slot />
 </a>

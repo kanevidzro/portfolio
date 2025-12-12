@@ -4,11 +4,14 @@ import ThemeSwitcher from './Switcher.astro'
 import { menuItems } from '../consts'
 ---
 
-<header>
-  <div class="flex w-full flex-row items-center justify-between">
-    <div class="flex flex-row items-start gap-3 font-medium text-black">
-      {menuItems.map((item) => <Link href={item.url}>{item.label}</Link>)}
-    </div>
+<header class="w-full py-6">
+  <div class="flex w-full items-center justify-between">
+    <nav class="flex items-center gap-4 font-medium text-black dark:text-white">
+      {menuItems.map((item) => (
+        <Link href={item.url}>{item.label}</Link>
+      ))}
+    </nav>
+
     <ThemeSwitcher />
   </div>
 </header>
