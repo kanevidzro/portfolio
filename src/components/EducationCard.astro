@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+
+export type EducationCard = {
+  course: string;
+  school: {
+    name: string;
+    image: string;
+  };
+  date: string;
+};
+
+const { course, school, date } = Astro.props as EducationCard;
+---
+
+<div class="flex items-center justify-between">
+  <div class="flex items-center gap-4">
+    <Image
+      src={school.image}
+      alt={school.name}
+      width={40}
+      height={40}
+      class="w-10 h-10 rounded-full object-cover"
+    />
+
+    <div>
+      <h3 class="font-medium">{school.name}</h3>
+      <p class="text-sm opacity-60">{course}</p>
+    </div>
+  </div>
+
+  <p class="text-sm opacity-60">{date}</p>
+</div>

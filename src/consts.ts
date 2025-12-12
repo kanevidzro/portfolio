@@ -58,7 +58,7 @@ export const menuItems: MenuItem = [
   },
 ]
 
-export const products = [
+export const projects = [
   {
     name: 'Xtottel',
     url: 'https://www.xtottel.com',
@@ -75,3 +75,22 @@ export const products = [
     image: '/tools/bun.svg',
   },
 ]
+
+export const education = [
+  {
+    school: {
+      name: "CYO Technical / Vocational Institute",
+      image: "/assets/ctvet.png",
+    },
+    course: "CTVET - Computer Hardware Technology",
+    date: "2023 — 2025",
+  },
+  {
+    school: {
+      name: "Agorve South R.C. JHS",
+      image: "/assets/waec.png",
+    },
+    course: "BECE - Compulsory Education",
+    date: "2011 — 2022",
+  },
+];

@@ -1,21 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import { HOME, SOCIALS, products } from '../consts'
+import { HOME, SOCIALS, projects, education } from '../consts'
+import EducationCard from '../components/EducationCard.astro'
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <section>
-    <h1
-      class="w-full pb-6 text-start text-[min(12vw,72px)] leading-[0.9] font-medium tracking-[-2px] sm:tracking-[-4px]">
+    <h1 class="w-full pb-6 text-start text-[min(12vw,72px)] leading-[0.9] font-medium tracking-[-2px] sm:tracking-[-4px]">
       Kane Vidzro,<br />
-      <span class="text-gray-500 dark:text-gray-400">CEO of Xtottel</span>
+      <span class="text-gray-500 dark:text-gray-400">Founder of Xtottel</span>
     </h1>
+    
     <div id="about" class="flex flex-col gap-4">
-      <div
-        class="flex flex-col gap-6 text-lg font-medium text-gray-700 dark:text-gray-400">
+      <div class="flex flex-col gap-6 text-lg font-medium text-gray-700 dark:text-gray-400">
         <p>
-          I am a 17-year-old Software Developer and entrepreneur. As the
-          hands-on CEO of
+          I am a 17-year-old Software Developer and entrepreneur. As the hands-on CEO of
           <a
             href="https://xtottel.com"
             target="_blank"
@@ -28,13 +27,13 @@ import { HOME, SOCIALS, products } from '../consts'
           I work on ideas like
           <div class="mt-5 flex flex-wrap gap-2">
             {
-              products.map((product) => (
+              projects.map((project) => (
                 <a
-                  href={product.url}
+                  href={project.url}
                   target="_blank"
-                  class="flex flex-wrap items-center justify-center gap-2 rounded-full bg-gray-100 p-2 transition-all duration-300 hover:scale-105 hover:rotate-1 hover:bg-gray-200 dark:bg-[#1F1F1F] dark:hover:bg-[#2F2F2F]">
-                  <img src={product.image} alt={product.name} class="size-9" />
-                  <span class="mr-2">{product.name}</span>
+                  class="flex flex-wrap items-center justify-center gap-1 rounded-full bg-gray-100 p-1 transition-all duration-300 hover:scale-105 hover:rotate-1 hover:bg-gray-200 dark:bg-[#1F1F1F] dark:hover:bg-[#2F2F2F]">
+                  <img src={project.image} alt={project.name} class="size-8" />
+                  <span class="mr-2">{project.name}</span>
                 </a>
               ))
             }
@@ -48,6 +47,20 @@ import { HOME, SOCIALS, products } from '../consts'
         </p>
       </div>
 
+      <!-- Education Section -->
+      <section class="mt-10 flex flex-col gap-4">
+        <h2 class="text-2xl font-semibold">Education</h2>
+
+        <div class="flex flex-col gap-4">
+          {
+            education.map((item) => (
+              <EducationCard {...item} />
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Social Links -->
       <div id="social-links" class="flex flex-row gap-4">
         {
           SOCIALS.map((SOCIAL) => (
