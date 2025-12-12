@@ -1,16 +1,16 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets'
 
 export type EducationCard = {
-  course: string;
+  course: string
   school: {
-    name: string;
-    image: string;
-  };
-  date: string;
-};
+    name: string
+    image: string
+  }
+  date: string
+}
 
-const { course, school, date } = Astro.props as EducationCard;
+const { course, school, date } = Astro.props as EducationCard
 ---
 
 <div class="flex items-center justify-between">
@@ -20,7 +20,7 @@ const { course, school, date } = Astro.props as EducationCard;
       alt={school.name}
       width={40}
       height={40}
-      class="w-10 h-10 rounded-full object-cover"
+      class="h-10 w-10 rounded-full object-cover"
     />
 
     <div>

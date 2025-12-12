@@ -79,18 +79,18 @@ export const projects = [
 export const education = [
   {
     school: {
-      name: "CYO Technical / Vocational Institute",
-      image: "/assets/ctvet.png",
+      name: 'CYO Technical / Vocational Institute',
+      image: '/assets/ctvet.png',
     },
-    course: "CTVET - Computer Hardware Technology",
-    date: "2023 — 2025",
+    course: 'CTVET - Computer Hardware Technology',
+    date: '2023 — 2025',
   },
   {
     school: {
-      name: "Agorve South R.C. JHS",
-      image: "/assets/waec.png",
+      name: 'Agorve South R.C. Basic school',
+      image: '/assets/waec.png',
     },
-    course: "BECE - Compulsory Education",
-    date: "2011 — 2022",
+    course: 'BECE - Compulsory Education',
+    date: '2011 — 2022',
   },
-];
+]
