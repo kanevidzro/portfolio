@@ -70,8 +70,8 @@ export const projects = [
     image: '/projects/sendexa.png',
   },
   {
-    name: 'HogMog',
-    url: 'https://hogmog.vercel.app',
+    name: 'Dugble',
+    url: 'https://www.dugble.com',
     image: '/skills/bun.svg',
   },
 ]
